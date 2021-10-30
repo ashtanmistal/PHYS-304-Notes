@@ -1,0 +1,34 @@
+\documentclass[oneside]{book}
+\usepackage{preamble}
+\usepackage{pgffor}
+\usepackage{standalone}
+
+\makeatletter
+\let\twodigits\two@digits
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\theauthor}
+\rfoot{Page \thepage}
+\lhead{\thetitle, Lecture \thechapter}
+
+\title{PHYS 304 Notes}
+\author{Ashtan Mistal}
+\date{September - December 2021}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents{}
+
+\foreach \i in {1, 2, ..., 99} {%
+\edef\FileName{Lecture\twodigits\i/main.tex}
+\IfFileExists{\FileName}{
+\chapter{Lecture \i}
+\input{\FileName}
+}
+}
+
+\end{document}
