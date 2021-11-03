@@ -1,0 +1,173 @@
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Section \thesection}
+\lhead{PHYS 304 Lecture 14}
+\rfoot{Page \thepage}
+
+
+\title{PHYS 304 Lecture 14}
+\author{Ashtan Mistal}
+\date{November 02, 2021}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
+\graphicspath{{./Lecture14/}}
+
+Less than 35\% response rate, so very difficult to make firm conclusions
+
+Does seem to be consensus that using blackboard is preferred over mostly .pptx slides, so will continue with that, where it makes sense. Split roughly 50/50 on value of TPS exercises. Likely based on whether or not one does the pre-reading. TPS exercises designed to work well if pre-reading has been seriously reviewed. I will keep some, but likely less than at beginning of course. A fair number of people would like more iClicker questions. We will do that in tutorials and lectures, again, where it makes sense. Thanks to those who filled it out!
+
+
+\section{Review of Key Points from Last Lecture}
+
+A general quantum mechanical state, represented by the ket $\ket{S(t)}$, contains all the information it is possible to know about the dynamical evolution of a point particle moving in some time-independent potential. The wavefunction that we have so far associated with the state, $\Psi_s(x,t)$ - where I have added a subscript S to acknowledge the fact that the abstract state $\ket{S(t)}$ is in a sense “more fundamental” than the wavefunction used to represent it - is one of many possible wavefunctions that can be associated with the state $\ket{S(t)}$ .
+
+The state $\ket{S(t)}$ can be equally well represented by any wavefunction, $\Psi_s(\zeta, t)$ , where $\zeta$ represents an eigen value of any physically-observable (and therefore Hermitian) operator associated with the classical dynamical variables in the problem ($x,p,E$, . . or any function $Q(x,p,E)$). i.e. solutions of the eigen value problem $\hat{\zeta} \ket{\zeta}$ . Explicitly,$\Psi_s(\zeta, t) = \braket{\zeta|S(t)}$, the inner product of the corresponding eigen state (not eigen function!!!), $\ket{\zeta}$ with the state  $\ket{S(t)}$
+
+
+The components of the wavefunction (i.e. the values of the wavefunction at each eigen value) are multi-dimensional (usually infinite dimensional) generalizations of the duples used to itemize the “amount of” a 2D real vector along two independent unit vectors. Thus $\Psi_s(x,t)$ tells you how much of the state $\ket{S(t)}$ is at location $x$, $\Psi_s(x,t)$ tells you how much of the state $\ket{S(t)}$ has a momentum $p$, etc. Note the subtlety: It makes no sense to sat $\Psi_s(x,t)$ tells you how much of the wavefunction $\Psi_s(x,t)$ is at location $x$: a tautology. 
+
+Thus there is nothing particularly special about working with the wavefunction $\Psi_s(x,t)$ associated with the choice $\zeta = x$ other than the fact that it has a particularly intuitive connection to classical notions of a localized particle, and the differential equation that can be used to explicitly solve for it, the Schrödinger equation, has a particularly simple form in the position basis. 
+
+We showed that the eigenvalue equation for the position operator, $\hat{x} \ket{\zeta} = \zeta \ket{\zeta}$, (note that this is defined using states, not wavefunctions!) \textbf{that becomes $x' f(x') = \zeta f(x')$ int the position basis}, has eigenfunctions $f(x') = \delta(x - x')$ for a continuum of eigen states $\zeta = x$. 
+
+
+
+\section{States, wavefunctions, and matrix representations}
+
+\subsection{Example 1}
+
+The eigenvalue equation for the position operator, $\hat{x} \ket{\zeta} = \zeta \ket{\zeta}$, (note that this is defined using states, not wavefunctions!) \textbf{\textit{that becomes $x' f(x') = \zeta f(x')$ in the position basis s...}}
+
+\begin{itemize}
+    \item \textit{how do we go from one to the other?}
+    \item Starting from the generic state equation, project the bra $\bra{x'}$ onto both sides:
+    $$\braket{x'|\hat{x}| \zeta} = \braket{x'|\zeta|\zeta}$$
+    
+    On the right hand side of this equation, the $\zeta$ between the bra and ket is just a number (an eigen value), and so $\braket{x'|\zeta|\zeta} = \zeta \braket{x'|\zeta}$, and $\braket{x'|\zeta}$ is just the wavefunction of the eigen state $\ket{\zeta}$ in the position basis (by definition). Call this function $\braket{x'|\zeta} = f(x')$
+    
+    Choose $\hat{\xi} = \hat x$
+    
+    $$\hat{x} \ket{x'} = x \ket{x}$$
+    
+    Project $\bra{x'}$ onto this equation:
+    
+    $\braket{x'|\hat{x}|x} - x \braket{x'|x}$, where $\braket{x'|x}$ is the wavefunction of eigenstate $\ket{x}$ in the position basis $\braket{x'|x} = f(x') = \psi_{\ket{x}}(x')$
+    
+    LHS:  $\braket{x'|\hat{x}|x} = \left( \bra{x'}|\hat{x} \right) \ket{x} = \braket{(\hat{x}^+ | x')|x}$
+    $= \braket{(\hat{x} \ket{x'}) | x} = x; \braket{x'|x} = x' f(x')$
+    
+    LHS = RHS, and so $x' f(x') = x f'(x')$
+    
+    We showed last time the solution of this $f(x') = \delta(x -x')$
+    
+    This is is one specific example of how to go from a generic state equation (in bras and kets) to a differential equation in a specific dynamical variable.
+    
+    $$\int_{- \infty}^\infty x' \delta(x - x') g(x') dx' = \int_{= \infty}^\infty x \delta(x -x') g(x') dx' = x g(x)$$
+    
+    
+\end{itemize}
+
+\subsection{Example 2: States versus Wavefunctions}
+
+"The components of the wavefunction (i.e. the values of the wavefunction at each eigen value) are multi-dimensional (usually infinite dimensional) generalizations of the duples used to itemize the “amount of” a 2D real vector along two independent unit vectors."
+
+Another quantity of interest would be the expectation value of the position operator, which in Diract\footnote{bra ket notation} notation is:
+
+
+To appreciate the wavefunction as an infinite dimensional vector (generalization of duple in 2d real vector space. consider the following:
+
+$$\braket{x}_{S(t)} = \braket{S(t)|\hat{x}|S(t)}$$
+
+Convert into form more familiar: Lets convert this into our familiar equation for the expectation value of the position operator using wavefunctions defined in the position basis.
+
+Step 1: Insert the unity operator (twice) on the right hand side, to map the states into wavefunctions in the position basis. 
+    
+    $$\braket{\hat{x}}|_{S(t)} = \braket{S(t)| \underbrace{(\int \ket{x'} \bra{x'} dx')}_{\text{Unity operator}} |\hat{x}| \underbrace{(\int \ket{x''} \bra{x''} dx'')}_{\text{Unity operator}} |S(t)}$$
+    
+    Note that the integrals are from $-\infty$ to $\infty$. 
+    
+    The unity operator projects onto the position basis. We will get expressions involving position space. 
+    
+    $$\braket{x'}|_{S(t)} = \int_{- \infty}^\infty \int_{- \infty}^\infty dx' dx'' \braket{S(t)|x'} \braket{x'|\hat{x}|x''} \braket{x''|S(t)}$$
+    
+    But, we know that $\braket{x'' | S(t)} = \Psi_s (x'',t)$, and $\braket{S(t)|x'} = \Psi_s^* (x',t)$. WE also know that $\braket{x'|\hat{x}|x''} = \bra{x'}|(\hat{x} \ket{x''}) = x'' \braket{x'|x''} = x'' \delta(x' - x'')$. 
+    
+    Therefore, we get the following:
+    
+    $$\braket{x'}|_{S(t)} = \int_{- \infty}^\infty \int_{- \infty}^\infty dx' dx'' \Psi_s^* (x',t) x'' \delta(x' - x'') \Psi_s (x'',t) = \int_{- \infty}^\infty dx' \Psi_s^* (x',t) x' \Psi_s (x',t)$$
+    
+Now let's see how to convert $\braket{x'}|_{S(t)}$ into a matrix / vector equation. We already carried out the first step, by expressing it completely in the position basis. 
+
+
+Replace $\int \int dx' dx''$ with $\sum_n \sum_m$ (shift to a discrete position space):
+
+$$\braket{\hat{x}}_{\ket{S(t)}} = \sum_n \sum_m \braket{S(t)|x_m} \braket{x_m|\hat{x}|x_n} \braket{x_n|S(t)}$$
+
+This should look familiar to:
+$$\begin{bmatrix} . \\ . \\ . \\ \end{bmatrix} \begin{bmatrix} . & . & . \\ . & . & . \\ . & . & . \end{bmatrix} \begin{bmatrix} . & . & . \end{bmatrix}$$
+
+Or, 
+
+$$\begin{bmatrix} \psi^* (x_m) \\ \vdots \\ \vdots \\ \vdots \end{bmatrix} \begin{bmatrix} x_1 & \dots & \dots & \dots \\ \vdots & x_2 & \ddots & \vdots \\ \vdots & \ddots & \ddots & \vdots \\ \vdots & \dots & \dots & x_n \end{bmatrix} \begin{bmatrix}  \psi_s (x_n) & \dots & \dots & \dots \end{bmatrix}$$
+
+\section{Momentum Basis}
+
+A logical first step? Operate on $\ket{S(t)}$ with the unity operator expanded in the momentum basis
+
+$$\ket{S(t)} = \int \ket{p} \braket{p|dp|S(t)} = \int dp \braket{p|S(t)} \ket{p}$$
+
+$$\ket{S(t)} = \int dp \left( \int dx' \braket{p | x'} \braket{x' S(t)} \right) \ket{p}$$
+
+$$ = \int dp  \left( dx' \braket{p|x'} \Psi_s(x',t) \right) \ket{p}$$
+
+What is $\braket{p|x'}$? $\braket{p|x'} = \braket{x'|p}^*$, but we know that $\braket{x'|p}$ is the wavefunction in the position basis of the eigen state of the momentum operator with eigenvalue $p$. How do we figure that out? 
+
+We know how to solve that problem in the position basis using space operators and wavefunctions:
+
+$$-i \hbar \frac{d}{dx'} \braket{x'|p} = p \braket{x'|p}$$
+
+We know the solution, to a normalization constant, is
+
+$$\braket{c'|p} = e^{- \frac{p}{\hbar} x'}$$
+
+Leave it to you to show that the normalization constant is $\frac{1}{\sqrt{2 \pi \hbar}}$, and therefore 
+
+$$\braket{c'|p} = \frac{1}{\sqrt{2 \pi \hbar}} e^{- \frac{p}{\hbar} x'}$$
+
+Substitute into $\ket{S(t)} = \int dp ( \int dx' \braket{p|x'} \Psi_s(x',t)) \ket{p}$, and we get
+
+$$\ket{S(t)} = \int dp \left( \int dx' \frac{1}{\sqrt{2 \pi \hbar}} e^{- \frac{p}{\hbar} x'} \right) \ket{p}$$
+
+So, we can solve for the expansion coefficients knowing $\Psi_s(x',t)$. 
+
+This looks awfully like $\Psi(x,t) = \sum_{n=1}^\infty c_n \psi_n(x)$ with $c_n = \int_0^a \psi_n^*(x) \Psi(x,t) dx$. How do we prove that they are equivalent?
+
+
+$$\ket{S(t)} = \int dp \left( \int dx' \frac{1}{\sqrt{2 \pi \hbar}} e^{- \frac{p}{\hbar} x'} \right) \ket{p}$$
+
+SO, project $\bra{x}$ onto both sides, to yield
+
+$$\braket{x|S(t)} = \int dp \left( \int dx' \frac{1}{\sqrt{2 \pi \hbar}} e^{- \frac{p}{\hbar} x'} \right) \braket{x|p}$$
+
+Or, equivalently, 
+
+$$\Psi_x(x,t) = \int dp \left( \int dx' \frac{1}{\sqrt{2 \pi \hbar}} e^{- \frac{p}{\hbar} x'} \right) \frac{1}{\sqrt{2 \pi \hbar}} e^{- \frac{p}{\hbar} x}$$
+
+\subsection{Take aways?}
+
+
+When actually having to explicitly solve an equation in Dirac notation, you often have to resort to translating it into a differential equation involving wavefunctions, then solve the differential equation. This “translation” process is facilitated by knowing where and how to insert the unity operator expressed in a well-chosen basis. Often, but not always, the position basis is chosen to solve the differential equations. (our starting point in this course!)
+
+
+
+\end{document}
