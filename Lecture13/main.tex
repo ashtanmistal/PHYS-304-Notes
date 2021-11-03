@@ -49,7 +49,7 @@ NOTE: this is a direct analogy to the 2D vector space example, if we think in te
 
 i.e. $\braket{\vec{r}'|\vec{r}} = \begin{bmatrix} x'^* & y'^* \end{bmatrix} \begin{bmatrix} x\\ y \end{bmatrix}$
 
-We also derived some properties of Hermitian operators ($\hat{O}^+ = \hat{O}$), based entirely on assumed eigen "states" and corresponding eigen values of that opperator, in abstract "state space":
+We also derived some properties of Hermitian operators ($\hat{O}^+ = \hat{O}$), based entirely on assumed eigen "states" and corresponding eigen values of that operator, in abstract "state space":
 
 $$\hat{O} \ket{O} = \hat{O}^+ \ket{O} = O \ket{O}$$
 
@@ -99,8 +99,75 @@ What would you choose to define the state at time $t$? ($c_n$ in $H$ basis, $\Ps
 \subsection{Activity 2}
 
 
+In 2D real vector space, we learned all the manipulations in the $\ket{\hat{i}}$ and $\ket{\hat{j}}$ basis,.before introducing other, more general orthonormal bases, $\ket{\hat{\alpha}_1}$ and $\ket{\hat{\alpha}_2}$. 
+
+IN quantum mechanics, we learned how to do crucial calculations using wavefunctions $\Psi(x,t)$, that involve differential operators and differential equations that act on functions that are part of the Hilbert space defined by square integrable equations in position space. At any given time $t$, the complex wavefunction is a function of$x$,  that specifies a complex \textit{amplitude} of $\Psi(x,t)$ at \textit{every point} $x$. 
+
+\hfill
+
+What is the relationship between $\Psi(x,t)$ and $\ket{S(t)}$?
+
+$$\ket{S(t)} = \sum_n \ket{O_n} \bra{O_n} | S(t)$$
+
+Let $\ket{O_n} \rightarrow \ket{x_n} \rightarrow \ket{x}$
+
+$$\Longrightarrow \ket{S(t)} = \int_{- \infty}^\infty dx \ket{x} \bra{x} \ket{S(t)} = \int_{- \infty}^\infty \braket{x|S(t)} \ket{x} dx$$
+
+Compare with $\Psi(x,t) = \sum_n c_n \Psi_n(x,t) = \sum_n \int_{- \infty}^\infty \Psi_n^*(x') \Psi(x',t) dx' \Psi_n(x)$
+
+where $\psi_n(x)$ are eigenfunctions of the total energy operator in 1D $x$-space.
+
+$\ket{x}$ are the eigen \textbf{states} of the position operator in abstract Hilbert space, whereas $\psi_n(x)$ are the eigen \textbf{functions} in the total energy operator in 1D $x$-space. 
+
+$\braket{x|S(t)}$ is the projection of the abstract state at time t in Hilbert space onto the eigen states of the position operator in abstract Hilbert space; $\int_{- \infty}^\infty \psi_n^*(x') \Psi(x',t) dx'$ is the projection of the full wavefunction in 1D x-space onto the eigen functions of the total energy operator. 
+
+Therefore, $\Psi(x,t) = \braket{x|S(t)}$
+
+i.e. our wavefunction is merely the projection of the immutable state of the particle at any time $t$, onto eigenstates of the immutable position operator with eigenvalues $x$!
 
 
+\subsection{Activity 3}
+
+The equivalent of our “standard”, or “inertial” basis in 2D real vector space, $\hat{i}$ and $\hat{j}$, in the case of Hilbert Spaces in Quantum Mechanics, is the position basis, which in 1D, as we have dealt with exclusively to this point, is simply the space spanned by $x$.  
+
+Lets better understand the nature of “the position basis”.  What defines it?
+
+
+Note that in the 2D vector space example, to do any actual calculations, (e.g. the projection of an arbitrary state onto an arbitrary alpha basis state), in practice you end up writing all the states in terms of the inertial reference frame, and then going the dot product. In quantum mechanics, it is fairly similar, and the usual / traditional "inertial" reference frame / basis are $\{\ket{r}\}$. 
+
+\subsubsection*{Activity Questions}
+
+$\hat{x} \ket{x} = x \ket{x}$ for a continuous space. What are $\hat{x}, x, $and $\ket{x}$?
+
+\hfill
+
+What is the wavefunction of a position operator's eigen state?
+
+If $\braket{x'|S(t)} = \Psi_{\ket{S}} (x',t)$, and if $\hat{x} \ket{x} = x \ket{x}$, then we have the following:
+
+$$\Psi_{\ket{x}} (x') = \braket{x'|x} = \delta(x - x')$$
+
+Thus, in the position basis, we have the following:
+
+$$\ket{S(t)} = \int_{- \infty}^\infty \ket{x} \bra{x} \ket{S(t)} dx$$
+
+$$\ket{S(t)} = \int_{- \infty}^\infty \braket{x|S(t)} \ket{x} dx$$
+
+$$\Longrightarrow \braket{x'|S(t)} = \Psi_{\ket{S(t)}} (x',t) = \int_{- \infty}^\infty \Psi_{\ket{S(t)}} (x,t) \braket{x'|x} dx$$
+
+$$\Psi_{\ket{S(t)}} (x',t) = \int_{- \infty}^\infty \Psi_{\ket{S(t)}} (x,t) \Psi_{\ket{x}} (x') dx = \int_{- \infty}^\infty \Psi_{\ket{S(t)}} (x,t) \delta(x - x')$$
+
+Therefore must think of our $\Psi(x,t)$ as merely a list of (complex) projections of the more general, immutable, abstract state of the particle, $\ket{S(t)}$ onto each abstract eigen state of the immutable $\hat{x}$  operator with (real) eigen values $x$.
+
+
+$$\begin{matrix}
+& & \text{Need to specify} \\
+\Psi(x,0) = \sum_n c_n \psi_n(x) & \longrightarrow &  \{c_n\} \{ \psi_n(x)\} \\
+\hfill
+= \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^\infty dk F(k) e^{ikx} & \longrightarrow & \{F(k)\} \{e^{ikx}\} \\
+\hfill
+= f(x) & \longrightarrow & \{f(x)\} \{\delta(x-x')\}; \int \text{is trivial}
+\end{matrix}$$
 
 
 
