@@ -1,0 +1,94 @@
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Section \thesection}
+\lhead{PHYS 304 Lecture 07}
+\rfoot{Page \thepage}
+
+
+\title{PHYS 304 Lecture 07}
+\author{Ashtan Mistal}
+\date{!!!}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
+\graphicspath{{./Lecture07/}}
+
+\section{Key review of points from last day}
+
+\begin{itemize}
+    \item Explored the dynamical behaviour of an infinite square well wavefunction that is initially composed of an equally weighted simple sum of the two lowest stationary eigen states.
+    \item Found that the associated probability density “sloshed” periodically back and forth from side to side, with a frequency 3 times the ground state eigen frequency, “bouncing off the walls”.  The period corresponds to the difference in eigen frequency between the two lowest level stationary states (essentially a beating effect). 
+    \item Determined that the expectation value of the momentum oscillated at the same frequency, and this “made sense” (had the right relative phase with respect to the motion of $|\Psi(x,t)|^2$).
+\end{itemize}
+
+\textbf{Important note:}
+
+The expectation value of momentum is \textit{not zero}, and it \textit{depends on time}. This is because our initial state is not proportional to a single eigenfunction of the time-independent Schrodinger equation, it therefore must be expanded in more than a single eigen function. 
+
+
+\section{Harmonic Oscillator Potential}
+
+\subsection{Activity 1}
+
+What is $x(t)$ for a classical particle of mass $m$ initially at rest at a position $x = x_0$ in a harmonic potential $V = \frac{1}{2} kx^2$?
+
+$$m \frac{d^2 x}{dt^2} = -kx \text{, since } F = - \nabla V = -kx$$
+
+$$\frac{d^2 x}{dt^2} + \frac{k}{m} = 0 \Rightarrow x(t) = A \cos \left( \sqrt{\frac{k}{m}} t \right) + B \sin \left( \sqrt{\frac{k}{m}} t \right)$$
+
+$x(0) = -x_0$, and $\frac{dx}{dt}(0) = 0$, therefore $A = -x_0$ and $B = 0$, giving us the following equation:
+
+$$x(t) = -x_0 \cos \left( \sqrt{\frac{k}{m}} t \right)$$
+
+What is the maximum distance it ever travels away from the origin?
+$$x_0$$
+
+\subsection{Activity 2}
+
+What is the probability distribution, $P(x)$, for finding the particle at any positon $x$ (this is strictly a classical mechanics problem)?
+
+
+\includegraphics[width = 0.9 \textwidth]{Lecture07/1.png}
+
+\includegraphics[width = 0.9 \textwidth]{Lecture07/2.png}
+
+$$x(t) = -x_0 \cos \left( \sqrt{\frac{k}{m}} t \right)$$
+
+Dwell time = $dx \frac{dt}{dx} = \frac{dx}{v(x)}$, we need to get $v(x)$, not $v(t)$. 
+
+Plot from \verb|Harmonic_oscillator.py|:
+
+\includegraphics[width = 0.7 \textwidth]{Lecture07/3.png}
+
+It is non-zero everywhere, spends more time near extremities. 
+
+
+\subsection{Activity 3}
+
+What is the full Schrodinger equation and the time independent Schrodinger equation for a quantum mechanical particle in this potential? Use dimensionless variables. 
+
+$$i \hbar \frac{\partial \Psi(x,t)}{\partial t} = \left( - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + \frac{1}{2} kx^2 \right) \Psi(x,t)$$
+
+where $\sqrt{\frac{k}{m}} = \omega$. 
+
+Also, we redefine $x \rightarrow \xi = x \sqrt{\frac{m \omega_0}{2 \hbar}}$
+
+\section{Analytic, brute force solution}
+
+\textit{(See posted notes on Canvas and text for the more elegant solution)}
+
+Four crucial steps from the dimensionless TISE, $\frac{d^2 \psi(\xi)}{d \xi^2} = (\xi - K) \psi(\xi)$, to determining the allowed energy levels and eigen functions:
+
+[!!! FINISH]
+
+
+\end{document}
