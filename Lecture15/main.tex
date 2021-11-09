@@ -1,0 +1,228 @@
+\documentclass{article}
+
+\usepackage{../preamble}
+\standalonetrue
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Section \thesection}
+\lhead{PHYS 304 Lecture 15}
+\rfoot{Page \thepage}
+
+
+\title{PHYS 304 Lecture 15}
+\author{Ashtan Mistal}
+\date{!!!}
+
+\begin{document}
+
+\ifstandalone
+\maketitle
+\fi
+
+\graphicspath{{./Lecture15/}}
+
+\section{Key review of points from last day}
+
+Saw several examples of how to understand and transform various quantum mechanical expressions (expansions in different bases, expectation values of observable operators), in three different representations:
+
+\begin{enumerate}
+    \item Dirac (bras and kets): the states and operators are “immutable”, meaning their properties exist, and the equations are independent of any basis choice
+    \item Wavefunctions and differential operators: for any given state/operator, their representation as wavefunctions/differential operators varies, depending on a chosen basis that is defined by the eigen states and eigen values of any valid physical observable (classical dynamical variable) in the system’s abstract Hilbert space
+    \item Vector representations of states and matrix representations of operators: for any given state/operator, their representation as vectors/matrices varies, depending on a chosen basis that is defined by the eigen states and eigen values of any valid physical observable (classical dynamical variable) in the system’s abstract Hilbert space
+\end{enumerate}
+
+Some important / useful techniques used in manipulating these equations included:
+
+\begin{enumerate}
+    \item Insertion of the identity operator, $\hat{I} = \int d \zeta \ket{\zeta} \bra{\zeta}$, expanded in terms of the complete set of eigen states of any physical observable, $\{\ket{\zeta}\}$.
+    \begin{itemize}
+        \item Used to decompose a state $\ket{S(t)}$ into a specific basis associated with a dynamical variable $\zeta$, and hence  determine the wavefunction of the state ion that particular basis, $\Psi_S (\zeta, t)$
+    \end{itemize}
+    \item Recognizing that the wavefunction $\Psi_S(\zeta, t) = \braket{\zeta | S(t)}$
+    \item Recognizing that $\braket{\alpha|\beta} = \braket{\beta|\alpha}^*$
+\end{enumerate}
+
+\section{Today}
+
+\begin{enumerate}
+    \item A few more examples of different wavefunctions; how to find explicit expressions for them, and how the wavefunctions in different bases can be transformed from one to another
+    \item A more rigorous treatment of eigen states, and expansions of arbitrary states in eigen state bases, associated with operators that have a continuous eigen spectrum
+    \item Motivation for why one might want to “work in a basis other than the position basis”.  Note this is equivalent to saying “know the wavefunction of a state in some basis other than the position basis” 
+\end{enumerate}
+
+\subsection{Questions}
+
+\subsubsection{Exercise 1}:
+
+Use Dirac notation to express the expansion of an arbitrary state $\ket{S(t)}$ in terms of the eigen states of:
+
+\begin{enumerate}
+    \item The position operator $\{\ket{x}\}$,
+    \item The momentum operator$\{\ket{p}\}$, 
+    \item The total energy operator $\{\ket{E_n}\}$
+\end{enumerate}
+
+Assume that our 1D particle is in a harmonic oscillator characterized by a natural frequency $\omega$. 
+
+$$\ket{S(t)} = \int dx \braket{x|S(t)} \ket{x}$$
+
+$$\ket{S(t)} = \int dp \braket{p|S(t)} \ket{p}$$
+
+$$\ket{S(t)} = \sum_{n=0}^\infty \braket{E_n|S(t)} \ket{E_n}$$
+
+For each of the three cases, what Dirac equation defines the eigen states and their respective eigen values?
+
+$$\hat{x} \ket{x} = x \ket{x}$$
+
+$$\hat{p} \ket{p} = p \ket{p}$$
+
+$$\hat{E} \ket{E_n} = E_n \ket{E_n}$$
+
+Immutable statements of the eigen value problem in general terms, but to actually solve the eigen value problem, we need to translate these into a specific representation of the states and operators. 
+
+\subsubsection{Exercise 2}
+
+Interpret the equations that result from projecting a position basis eigen state, $\ket{x'}$, onto the three expansion equations, after you have rendered all bras and kets as explicit functions of the relevant eigen values. 
+
+$$\braket{x'|S(t)} = \int dx \braket{x|S(t)} \braket{x'|x}$$
+
+$$\Psi_S(x',t) = \int dx \Psi_S (x,t) \delta(x- x')$$
+
+$$\braket{x'|S(t)} = \int dp \braket{p|S(t)} \braket{x'|p}$$
+
+$$\Psi_S(x',t) = \int dp \Psi_S(p,t) \frac{1}{\sqrt{2 \pi \hbar}} e^{i \frac{p}{\hbar} x'}$$
+
+$$\braket{x'|S(t)} = \sum_{n=0}^\infty \braket{E_n|S(t)} \braket{x'|E_n}$$
+
+$$\Psi_S(x',t) = \sum_{n=0}^\infty \Psi_S (E_n,t) \left( \frac{m \omega}{\pi \hbar} \right)^{\frac{1}{4}} \frac{1}{\sqrt{2^n n!}} H_n \left( \sqrt{\frac{m \omega}{\hbar}} x' \right) e^{- \frac{m \omega x'^2}{2 \hbar}}$$
+
+\subsubsection{Exercise 3}
+
+Interpret the equations that result from projecting a position basis eigen state, $\ket{p'}$⟩, onto the three expansion equations, after you have rendered all bras and kets as explicit functions of the relevant eigen values. 
+
+$$\braket{p'|S(t)} = \int dx \braket{x|S(t)} \braket{p'|x}$$
+
+$$\Psi_S(p',t) = \int dx \Psi_S(x,t) \frac{1}{\sqrt{2 \pi \hbar}} e^{-i \frac{p'}{\hbar} x}$$
+
+$$\braket{p'|S(t)} = \int dp \braket{p|S(t)} \braket{p'|p}$$
+
+$$\Psi_S(p',t) = \int dp \Psi_{S} ( p, t) \delta(p - p')$$
+
+Lastly, 
+
+$$\braket{p'|S(t)} = \sum_{n=0}^\infty \braket{E_n|S(t)} \braket{p'|E_n}$$
+
+How to evaluate $\braket{p'|E_n}$?
+
+$$\Psi_S(x',t) = \sum_{n=0}^\infty \Psi_{S}(E_n, t) \int dx' \frac{1}{\sqrt{2 \pi \hbar}} e^{-i \frac{p}{\hbar} x'} \left( \frac{m \omega}{\pi \hbar}\right)^\frac{1}{4} \frac{1}{\sqrt{2^n n!}} H_n \left( \sqrt{\frac{m \omega}{\hbar}} x \right) e^{- \frac{m \omega x'^2}{2 \hbar}}$$
+
+[INSERT IMAGE FROM PHONE]
+
+
+\hfill
+
+$\bra{x'} \quad \braket{p'|E_n}$
+
+For $\bra{p'}$, in $\int_{- \infty}^\infty  \braket{p'|x} \braket{x|E_n} dx$, $\braket{p'|x} = \braket{x}p'^*$, which is equal to $\left( e^{i \frac{p'}{\hbar} x} \right)^*$, and $\braket{x|E_n}$ is the wavefunction in position basis of the energy eigen state with eigenvalue $E_n$
+
+What do all of these equations represent?
+
+Bases transformations of wavefunction representations of the state $\ket{S(t)}$. 
+
+Coordinate (basis) transformations:
+
+$$\hat{\zeta_1} \ket{\zeta_1} = \zeta_1 \ket{\zeta_1}$$
+
+$$\hat{\zeta_2} \ket{\zeta_2} = \zeta_2 \ket{\zeta_2}$$
+
+$$\left[ \Psi_S(\zeta_1,t) \right] = \begin{bmatrix} . \\ . \end{bmatrix}  \begin{bmatrix} \Psi_S(\zeta_2,t) \end{bmatrix}$$
+
+
+\section{Rigorous treatment of operators with continuous eigen spectra}
+
+In case where a Hermitian operator $\hat{Q}$ possesses a discrete spectrum of eigen state $\{\ket{q_n}\}$ where we know that an arbitrary state at a given time can be expressed as $\ket{S(t)} = \sum_{n=1}^\infty c_n \ket{q-n}$ lets review what are the two crucial properties of the eigen states that allow us to write the state as  $\ket{S(t)} = \sum_{n=1}^\infty \braket{q_n | S(t)} \ket{q_n}$ and therefore uniquely find each $c_n$?
+
+
+Postulate $\ket{S(t)} \geq \sum_{n=1}^\infty c_n \ket{q_n}$ for some $\{\ket{q_n}\}$
+
+\textbf{IF} the inner product $\braket{q_m|q_n}$ is well-defined, \textbf{and if} $\braket{q_m|q_n} = \delta_{nm}$, \textbf{then,}
+
+$$\braket{q_m|S(t)} \geq \sum_{n=1}^\infty c_n \braket{q_m| q_n} = c_m$$
+
+%[rest of slide 14]
+
+What do these properties imply about the wavefunctions in any given basis that might be used to actually evaluate the inner product $\braket{q_m | q_n}$?
+
+$$\braket{q_m|q_n} = \int d \zeta \braket{q_m|\zeta} \braket{\zeta|q_n} = \int d \zeta \psi^*_{qm} (\zeta) \psi_{qn} (\zeta) = \delta_{nm}$$
+
+This requires the wavefunctions $\psi_{qn}(\zeta)$ be bounded and square integrable (normalizable). 
+
+But we have already encountered the fact that the eigen functions of the total energy operator for the free particle, or the momentum operator more generally, are not normalizable. They also have continuous eigen spectra ... . 
+
+%[slide 15]
+
+In the case where a Hermitian operator $\hat{\zeta}$ has a \textbf{continuum of eigen states}, $\ket{\zeta}$ where the eigenvalues, $\zeta$, are not necessarily real, and the eigen functions are not square integrable (not part of Hilbert space) - for instance the stationary states of the free particle, or the eigen states of the momentum operator - we saw that if you form a wavepacket by superimposing a continuous distribution of the eigen functions \textbf{that do have real eigen values}, you can mathematically realize square-integrable functions that are solutions of the Schrodinger equation. 
+
+The implication is that an arbitrary state $\ket{S(t)}$ can be expanded in eigen states of such operators as $\ket{S(t)} \geq \int_{- \infty}^\infty c(\zeta) \ket{\zeta} d\zeta$ where the integral is along the real $\zeta$ axis. 
+
+What generalized property of the eigen states, similar to the discrete case above, is required in order to evaluate a unique $c(\zeta)$?
+
+In $-i \hbar \frac{d}{dx} \psi(x) = p \psi(x)$, is there anything that forces the eigenvalues to be real? no. 
+
+If we limited our sum over eigenstates to make up our wavepacket to only real values, then we found that nice Gaussian wavepacket that was normalizable. 
+
+%[slide 16]
+
+Postulate $\ket{S(t)} \geq \int_{- \infty}^\infty c(\zeta) \ket{\zeta} d\zeta$ for some $\{\ket{\zeta}\}$
+
+\textbf{If} the inner product $\braket{\zeta|\zeta'}$ is well-defined, and \textbf{if} $\braket{\zeta|\zeta'} = \delta(\zeta - \zeta')$, \textbf{then},
+
+$$\braket{\zeta|S(t)} \geq \int_{- \infty}^\infty c(\zeta') \braket{\zeta|\zeta'} d \zeta$$
+
+$$\int_{- \infty}^\infty c(\zeta') \delta(\zeta - \zeta') d \zeta = c(\zeta)$$
+
+% slide 17
+
+Can finally resolve, or put to rest our fudging around the non-normalizability issue with the free particle eigen states, and having to invoke an artificial discretization of space to gain a conceptual understanding of the position operator’s eigen functions. Recall our problematic normalization issue with the eigen functions of the time independent SE for a free particle:
+
+$$\int_{- \infty}^\infty e^{- ikx} e^{ikx} dx = \int_{- \infty}^\infty dx = \infty$$
+
+Hence we have a normalization issue. But note that $\int_{- \infty}^\infty e^{- ikx} e^{ik'x} dx = \sqrt{2 \pi} FT \left\{e^{ik'x} \right\} (k) \propto \delta(k-k')$, and therefore the set of functions of $k, \left\{ e^{ikx} \right\}$ do satisfy the crucial requirements to form a continuous basis for expanding an arbitrary, well-behaved function of $x$, \textit{despite the fact that they themselves aren't normalizable.}
+
+% stuff on board:
+
+Relevance of wave functions in different bases:
+
+Find the expectation value of some operator $\hat{M}$ when particle is in state $\ket{S(t)}$, working in the basis of some general Hermitian operator $\hat{Q}$ with eigen states / values $\ket{q_n}, q_n$. 
+
+$$\braket{\hat{M}}|_{S(t)} = \braket{S(t)|\hat{M}|S(t)} = \sum_{n=0}^\infty \sum_{m=0}^\infty \braket{S(t)|q_n} \braket{q_n|\hat{M}|q_m} \braket{q_m|S(t)}$$
+
+What if we choose $\hat{Q} = \hat{M}$?
+
+$$\braket{\hat{M}} = \sum_n \sum_m \underbrace{\braket{S(t)|M_n}}_{ = \Psi_S^*(M_n,t)} \braket{M_n|\underbrace{\hat{M} | M_m}_{ = M_m \ket{M_m}}} \underbrace{\braket{M_m|S(t)}}_{= \Psi_S(M_m,t)}$$
+
+$$\braket{\hat{M}} = \sum_n \sum_m \Psi_S^* (M_n,t) M_m \underbrace{\braket{M_n|M_m}}_{ = \delta_{n,m}} \Psi_S(M_m, t)$$
+
+$$ = \sum_n |\Psi_S(M_n,t)|^2 M_n$$
+
+Let $\hat{M} = \hat{x}$
+
+$$\langle \hat{x}\rangle = \sum_n |\Psi_S(x_n,t)|^2 x_n$$
+
+This is the probability distribution for finding the particle at $x = x_n$
+
+Therefore, $\sum_n |\Psi_S(M_n,t)|^2 M_n$ is the probability distribution of finding a particle with observable value $M = M_n$. This is arbitrary. 
+
+
+%[slide 19]
+
+%[slide 20]
+
+%[slide 21]
+
+%[slide 22]
+
+
+
+\end{document}
