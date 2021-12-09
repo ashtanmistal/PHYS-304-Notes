@@ -123,10 +123,9 @@ How do any of these spherical harmonic functions depend on the exact form of the
 
 Pause: what do we know (and what do we not know) so far about the solutions of the time-independent SE for a particle that experiences a spherically symmetric potential?  
 
-\textbf{We know precisely that their theta and phi dependence is constrained to functions with shapes that depend only on two integers, l and m, where for any $l \geq 1$, there are $2l+1$ allowed values of $m: -l, -l+1,..0,1,...l$, and the total number of nodes, split between the theta and phi degrees of freedom is equal to l, and the number of nodes in the phi degree of freedom is $|m|$.
+We know precisely that their theta and phi dependence is constrained to functions with shapes that depend only on two integers, l and m, where for any $l \geq 1$, there are $2l+1$ allowed values of $m: -l, -l+1,..0,1,...l$, and the total number of nodes, split between the theta and phi degrees of freedom is equal to l, and the number of nodes in the phi degree of freedom is $|m|$.
 
 We know nothing about the radial part of the solution.
-}
 
 \subsection{Radial Part of the Solution}
 
@@ -148,14 +147,50 @@ $$V(r) = - \frac{e^2}{4 \pi \epsilon_0} \frac{1}{r}$$
 
 The hydrogen atom, specifically for the Coulomb potential.  
 
-\break 
+Note that they are connected only by l, not m. 
 
-Note that they are connected only by l, not m
+For bound states, $E < 0$, so $\kappa$ is real. Dividing Equation 4.53 by $E$, we have the following:
+
+$$\frac{1}{\kappa^2} \frac{d^2 u}{dr^2} = \left[ 1 - \frac{me^2}{2 \pi \epsilon_0 \hbar^2 \kappa} \frac{1}{\kappa r} + \frac{l(l+1)}{\kappa^2 r^2} \right] u$$
+
+where $\kappa = \frac{\sqrt{-2mE}}{\hbar}$
+
+With $\rho \equiv \kappa r$, and $\rho_0 = \frac{me^2}{2m\epsilon_0 \hbar^2}$:
+
+$$\frac{d^2 u}{d \rho^2} = \left[ 1 - \frac{\rho_0}{\rho} + \frac{l(l+1)}{\rho^2} \right] u$$
+
+As $\rho \to \infty$, 
+
+$$\frac{d^2 u}{d \rho^2} = u; \quad u(\rho) = Qe^{- \rho} + Be^\rho; \quad u(\rho) ~ Ae^{- \rho}$$
+
+As $\rho \to 0$, 
+
+$$\frac{d^2}{d \rho^2} = \frac{l(l+1)}{\rho^2}; \quad u(\rho) = C \rho^{l+1} + D \rho^{- l}, \quad u(\rho) ~ C \rho^{l+1}$$
+
+Similar to the harmonic oscillator, where we assumed a functional form that includes a polynomial, and do a power series expansion of that polynomial to get a recursion formula for it’s coefficients. Just like the harmonic oscillator, they can’t be arbitrarily large, so specific sets of coefficients dictated by a requirement for there to be a maximum power in a given polynomial solution.  $j=0$ corresponds to the constant, $j=1$ to the linear term in rho, etc.
 
 
+$$u(\rho) = \rho^{l+1} e^{-p} v(\rho) \quad \& \quad \frac{d^2 u}{d \rho^2} = \left[ 1 - \frac{\rho_0}{\rho} + \frac{l(l+1)}{\rho^2} \right] u$$
 
+$$\therefore \rho \frac{d^2 v}{d \rho^2} + 2(l+1-\rho) \frac{dv}{d \rho} + \left[ \rho_0 - 1(l+1) \right] v = 0$$
 
+Does this remind you of any other equation we have encountered?
 
+Assume the following:
+
+$$v(\rho) = \sum_{j=0}^\infty a_j \rho^j$$
+
+\includegraphics[width = 0.9 \textwidth]{Lecture20/4.png}
+
+Note, $n=N+l$ (Eqn. 2.67) where $N$ is the order of the radial polynomial in the expansion, so $N-1$ is equal to the number of nodes in the radial function $R$, which is therefore $= n-l-1$. Check with figure 4.7
+
+\section{The full set of eigen functions ($n, \ell, m)$}
+
+\includegraphics[width = 0.9 \textwidth]{Lecture20/5.png}
+
+You can always look up or numerically evaluate the actual special functions, but the key things you must understand are the relationships/dependencies between the integers $n, l,$ and $m$, the associated degeneracies, and the number of nodes in each of the degrees of freedom. 
+
+\includegraphics[width = 0.5 \textwidth]{Lecture20/6.png}
 
 
 \end{document}
